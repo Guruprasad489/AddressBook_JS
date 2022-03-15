@@ -169,6 +169,16 @@ function deleteContact() {
     }
 }
 
+//UC6 - Function to count contact in addressbook
+function ContactCount() {
+    try {
+        let countContact = addressBookContactArr.reduce((contact) => contact + 1, 0)
+        console.log(`Total Number Of Contacts are : ${countContact}`);
+    } catch (e) {
+        console.error(e);
+    }
+}
+
 //Function to perform addressbook operations
 function AddressBookOperations() {
     try {
@@ -176,7 +186,7 @@ function AddressBookOperations() {
         AddContact("Guruprasad", "Kumbar", "Kothali", "Belgaum", "Karnataka", "591287", "91 8971615536", "guruprasad@gmail.com");
         AddContact("Guru", "K", "Jyotiba", "Kolhapur", "Maharastra", "789456", "91 9087654321", "guru@gmail.com");
         while (true) {
-            console.log("\n0: Exit \n1: Add New Contact  \n2: Display contacts \n3: Edit contact by name \n4: Delete contact");
+            console.log("\n0: Exit \n1: Add New Contact  \n2: Display contacts \n3: Edit contact by name \n4: Delete contact \n5: Contacts count");
             switch (parseInt(readlineSync.question('Enter the choice : '))) {
                 case 0:
                     console.log("Exited");
@@ -194,10 +204,15 @@ function AddressBookOperations() {
                 case 4:
                     deleteContact();
                     break;
+                case 5:
+                    //ContactCount();
+                    console.log(`Total Number Of Contacts are : ${addressBookContactArr.length}`);
+                    break;
                 default:
                     console.log("Wrong Choice");
                     break;
             }
+            readlineSync.question();
         }
     } catch (e) {
         console.error(e);
