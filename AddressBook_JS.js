@@ -44,7 +44,7 @@ class Contact {
     }
 
     toString() {
-        return `\nFirst Name: ${this.firstName}, Last Name: ${this.lastName}, Address: ${this.address}, City: ${this.city}, State: ${this.state}, ZipCode: ${this.zipCode}, Phone Number: ${this.phoneNumber}, Email-Id: ${this.emailId}`;
+        return `First Name: ${this.firstName}, Last Name: ${this.lastName}, Address: ${this.address}, City: ${this.city}, State: ${this.state}, ZipCode: ${this.zipCode}, Phone Number: ${this.phoneNumber}, Email-Id: ${this.emailId}`;
     }
 }
 
@@ -156,6 +156,19 @@ function FindAndEditContact() {
     }
 }
 
+//UC5 - Function to delete contact based on name
+function deleteContact() {
+    try {
+        let name = readlineSync.question('Enter The Name Of The Contact To delete Contact : ');
+        const index = addressBookContactArr.findIndex((contact) => contact.firstName == name);
+        //using splice remove the element
+        if (index != -1)
+            addressBookContactArr.splice(index, 1);
+    } catch (e) {
+        console.error(e);
+    }
+}
+
 //Function to perform addressbook operations
 function AddressBookOperations() {
     try {
@@ -163,7 +176,7 @@ function AddressBookOperations() {
         AddContact("Guruprasad", "Kumbar", "Kothali", "Belgaum", "Karnataka", "591287", "91 8971615536", "guruprasad@gmail.com");
         AddContact("Guru", "K", "Jyotiba", "Kolhapur", "Maharastra", "789456", "91 9087654321", "guru@gmail.com");
         while (true) {
-            console.log("\n0: Exit \n1: Add New Contact  \n2: Display contacts \n3: Edit contact by name");
+            console.log("\n0: Exit \n1: Add New Contact  \n2: Display contacts \n3: Edit contact by name \n4: Delete contact");
             switch (parseInt(readlineSync.question('Enter the choice : '))) {
                 case 0:
                     console.log("Exited");
@@ -177,6 +190,9 @@ function AddressBookOperations() {
                     break;
                 case 3:
                     FindAndEditContact();
+                    break;
+                case 4:
+                    deleteContact();
                     break;
                 default:
                     console.log("Wrong Choice");
