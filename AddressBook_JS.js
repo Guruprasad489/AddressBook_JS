@@ -181,6 +181,13 @@ function ContactCount() {
     }
 }
 
+//UC8 - Function to seach person in a particular city or state
+function seachPersonByCityOrState(city, state) {
+    let cityOrState = readlineSync.question("Enter A City Or State Name To Find Person : ");
+    let contact = addressBookContactArr.filter((contact) => contact.city == cityOrState || contact.state == cityOrState);
+    console.log(contact.join("\n"));
+}
+
 //Function to perform addressbook operations
 function AddressBookOperations() {
     try {
@@ -188,7 +195,7 @@ function AddressBookOperations() {
         AddContact("Guruprasad", "Kumbar", "Kothali", "Belgaum", "Karnataka", "591287", "91 8971615536", "guruprasad@gmail.com");
         AddContact("Guru", "K", "Jyotiba", "Kolhapur", "Maharastra", "789456", "91 9087654321", "guru@gmail.com");
         while (true) {
-            console.log("\n0: Exit \n1: Add New Contact  \n2: Display contacts \n3: Edit contact by name \n4: Delete contact \n5: Contacts count");
+            console.log("\n0: Exit \n1: Add New Contact  \n2: Display contacts \n3: Edit contact by name \n4: Delete contact \n5: Contacts count \n6: Search Person by city or state");
             switch (parseInt(readlineSync.question('Enter the choice : '))) {
                 case 0:
                     console.log("Exited");
@@ -207,8 +214,11 @@ function AddressBookOperations() {
                     deleteContact();
                     break;
                 case 5:
-                    //ContactCount();
+                    ContactCount();
                     console.log(`Total Number Of Contacts are : ${addressBookContactArr.length}`);
+                    break;
+                case 6:
+                    seachPersonByCityOrState();
                     break;
                 default:
                     console.log("Wrong Choice");
