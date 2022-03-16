@@ -195,7 +195,8 @@ function AddressBookOperations() {
         AddContact("Guruprasad", "Kumbar", "Kothali", "Belgaum", "Karnataka", "591287", "91 8971615536", "guruprasad@gmail.com");
         AddContact("Guru", "K", "Jyotiba", "Kolhapur", "Maharastra", "789456", "91 9087654321", "guru@gmail.com");
         while (true) {
-            console.log("\n0: Exit \n1: Add New Contact  \n2: Display contacts \n3: Edit contact by name \n4: Delete contact \n5: Contacts count \n6: Search Person by city or state");
+            console.log("\n0: Exit \n1: Add New Contact  \n2: Display contacts \n3: Edit contact by name \n4: Delete contact \n5: Contacts count \n6: Search Person by city or state"+
+                        "\n7: View Person by city or state");
             switch (parseInt(readlineSync.question('Enter the choice : '))) {
                 case 0:
                     console.log("Exited");
@@ -218,6 +219,9 @@ function AddressBookOperations() {
                     console.log(`Total Number Of Contacts are : ${addressBookContactArr.length}`);
                     break;
                 case 6:
+                    seachPersonByCityOrState();
+                    break;
+                case 7:
                     seachPersonByCityOrState();
                     break;
                 default:
