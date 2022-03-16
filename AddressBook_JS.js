@@ -53,15 +53,17 @@ var addressBookContactArr = new Array();
 
 //UC1 - Function to return object of added contacts
 function AddContact(firstName, lastName, address, city, state, zipCode, phoneNumber, emailId) {
-    let contact
     try {
-        //Object for class
-        contact = new Contact(firstName, lastName, address, city, state, zipCode, phoneNumber, emailId);
+        let checkContact = addressBookContactArr.filter((contact) => contact.firstName == firstName && contact.lastName == lastName);
+        if (checkContact.length == 0) {
+        let contact = new Contact(firstName, lastName, address, city, state, zipCode, phoneNumber, emailId);
+        addressBookContactArr.push(contact);
+        console.log("Contact added Succesfully");
+        }
+        else console.log("Contact is already exist for this name")
     } catch (e) {
         console.error(e)
     }
-    addressBookContactArr.push(contact);
-    console.log("Contact added Succesfully");
 }
 
 //Function to get the details of the contact from the user
